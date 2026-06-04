@@ -3,11 +3,15 @@ from pydantic import BaseModel
 from fastapi import FastAPI
 import numpy as np
 import uvicorn
+from pathlib import Path
 import os
 
 app = FastAPI()
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-model = pickle.load(open(os.path.join(BASE_DIR, "model", "ufo-model.pkl"), "rb"))
+BASE_DIR = Path(__file__).resolve().parent.parent
+WEIGHTS_PATH = BASE_DIR / "model" / "ufo-model.pkl"
+
+with WEIGHTS_PATH.open("rb") as f:
+    model = pickle.load(f)
 countries = ["Australia", "Canada", "Germany", "UK", "US"]
 
 
