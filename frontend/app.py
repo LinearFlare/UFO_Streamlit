@@ -3,7 +3,7 @@ import os
 import requests
 import streamlit as st
 
-BACKEND_URL = os.environ.get("BACKEND_URL", "http://localhost:8001")
+BACKEND_URL = os.environ.get("BACKEND_URL", "https://ufo-streamlit.onrender.com")
 
 st.title("UFO Sighting Predictor")
 st.write("Predict which country a UFO sighting is likely from based on duration, latitude, and longitude.")
